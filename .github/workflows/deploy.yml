@@ -32,7 +32,8 @@ jobs:
       - name: Run tests
         run: npm test
       - name: Output information
-        run: echo "env username: {{ env.MONGODB_USERNAME }}, env db name: $MONGODB_DB_NAME" #multiple ways to access env var
+        run: |
+          echo "env username: {{ env.MONGODB_USERNAME }}, env db name: $MONGODB_DB_NAME" #multiple ways to access env var
   deploy:
     needs: test
     runs-on: ubuntu-latest
