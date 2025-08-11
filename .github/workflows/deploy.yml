@@ -9,12 +9,12 @@ on:
 env:
   MONGODB_DB_NAME: gha-demo
 jobs:
-  env: #testing db only
-  MONGODB_CLUSTER_ADDRESS: cluster0.g5sq4hd.mongodb.net
-  MONGODB_USERNAME: obyat
-  MONGODB_PASSWORD: gh-actions
-  PORT: 8080
   test:
+    env: #testing db only
+      MONGODB_CLUSTER_ADDRESS: cluster0.g5sq4hd.mongodb.net
+      MONGODB_USERNAME: obyat
+      MONGODB_PASSWORD: gh-actions
+      PORT: 8080
     environment: testing
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +39,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: |        
+        run: |
           echo "job specific env var should not be available in deploy job: $MONGODB_USERNAME"
           echo "workflow global env var should be available in deploy job: $MONGODB_DB_NAME"
